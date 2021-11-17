@@ -4,6 +4,14 @@ import { useState } from 'react';
 const EditScreen = ({setEditScreenVisibility,editFoodIndex,foodList}) => {
     const[editFoodForm,setEditFoodForm]=useState(foodList[editFoodIndex]);
     const{title,price,description}=editFoodForm;
+    const onChange=(value,key)=>{
+        setEditFoodForm(prev=>{
+           return{
+               ...prev,[key]:value
+           } 
+        })
+    }
+
     return (
         <div className="over-view-screen">
             <div className="edit-food-card-container">
@@ -19,11 +27,9 @@ const EditScreen = ({setEditScreenVisibility,editFoodIndex,foodList}) => {
                 <input type="text" value={title}
                 onChange={
                     (e)=>{
-                        setEditFoodForm(prev=>{
-                            return{
-                                ...prev,title:e.target.value
-                            }
-                        })
+                        onChange(e.target.value,"title");
+                        
+                            
                     }
                 }
                  />
@@ -34,12 +40,12 @@ const EditScreen = ({setEditScreenVisibility,editFoodIndex,foodList}) => {
                 <input type="number" value={price}
                  onChange={
                     (e)=>{
-                        setEditFoodForm(prev=>{
-                            return{
-                                ...prev,price:e.target.value
-                            }
-                        })
-                    }
+                            
+                         onChange(e.target.value,"price");
+                                
+                                    
+                            
+                        }
                 }
                  
                 />
@@ -49,12 +55,9 @@ const EditScreen = ({setEditScreenVisibility,editFoodIndex,foodList}) => {
                  <textarea value={description}
                   onChange={
                     (e)=>{
-                        setEditFoodForm(prev=>{
-                            return{
-                                ...prev,description:e.target.value
-                            }
-                        })
-                    }
+                        onChange(e.target.value,"description");
+                       
+                         }
                 }
                  />
                  

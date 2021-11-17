@@ -32,7 +32,7 @@ const totalfoodList = [{
   status:true,
   flavor:"Spicy",
   description:"  Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, dolorem omnis! Odit accusamus corrupti, praesentium vitae quasi suscipit beatae quia voluptas hic sunt nisi, aliquam eos dolor aspernatur cum minus.",
-  imageUrl:"https://www.kindpng.com/picc/m/788-7881073_chicken-65-images-hd-png-transparent-png.png",
+  imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ1NEc8DMZvDPZK9dx3tkHgNoDGrhjgc9A5Q&usqp=CAU",
   quantity:"12pc",
   deliveryTime:"30m",
 },
@@ -44,7 +44,7 @@ const totalfoodList = [{
   status:false,
   flavor:"Spicy",
   description:"  Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, dolorem omnis! Odit accusamus corrupti, praesentium vitae quasi suscipit beatae quia voluptas hic sunt nisi, aliquam eos dolor aspernatur cum minus.",
-  imageUrl:"https://media.gettyimages.com/photos/marinated-chicken-wings-picture-id171368988?k=20&m=171368988&s=612x612&w=0&h=mXxENFXe4wBdkRkTdP_HdyXH7PIbg5piRqOFW6F2a1w=",
+  imageUrl:"https://dinetable.com/wp-content/uploads/2018/06/Chicken-Pottitherichathu-Recipe4-575x383.jpg",
   quantity:"12pc",
   deliveryTime:"30m",
 },
@@ -82,7 +82,7 @@ const App = ()=> {
          sort(e.target.value);
        }}
        >
-         <option value="">Sort By Price</option>
+         <option value="">Sort By Price (₹)</option>
         <option value="Hight to low">Hight to low</option>
         <option value="Low to high">Low to high</option>
       </select>
