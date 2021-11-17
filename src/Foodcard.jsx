@@ -13,6 +13,7 @@ const Foodcard = ({title,imageUrl,price,description,status,deleteCard,toggleStat
             }
             >
                     </div>
+              <div className="food-card-edit-button" />     
             <img className="food-card-thumbnail" src={imageUrl} alt={title}/>
             <div className="food-card-detail-section">
                 

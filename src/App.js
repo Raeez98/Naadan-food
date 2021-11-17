@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FoodCard from "./Foodcard";
+import EditScreen from "./EditScreen";
 const totalfoodList = [{
   id:0,
   title: "Chicken 65",
@@ -105,6 +106,7 @@ const App = ()=> {
     })
   }
       </div>
+      <EditScreen/>
       </>
     );
   }
