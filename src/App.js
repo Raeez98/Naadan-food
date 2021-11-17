@@ -20,7 +20,7 @@ const totalfoodList = [{
   status:false,
   flavor:"Spicy",
   description:"  Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, dolorem omnis! Odit accusamus corrupti, praesentium vitae quasi suscipit beatae quia voluptas hic sunt nisi, aliquam eos dolor aspernatur cum minus.",
-  imageUrl:"https://www.kindpng.com/picc/m/788-7881073_chicken-65-images-hd-png-transparent-png.png",
+  imageUrl:"https://media.gettyimages.com/photos/marinated-chicken-wings-picture-id171368988?k=20&m=171368988&s=612x612&w=0&h=mXxENFXe4wBdkRkTdP_HdyXH7PIbg5piRqOFW6F2a1w=",
   quantity:"12pc",
   deliveryTime:"30m",
 },
@@ -44,13 +44,15 @@ const totalfoodList = [{
   status:false,
   flavor:"Spicy",
   description:"  Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, dolorem omnis! Odit accusamus corrupti, praesentium vitae quasi suscipit beatae quia voluptas hic sunt nisi, aliquam eos dolor aspernatur cum minus.",
-  imageUrl:"https://www.kindpng.com/picc/m/788-7881073_chicken-65-images-hd-png-transparent-png.png",
+  imageUrl:"https://media.gettyimages.com/photos/marinated-chicken-wings-picture-id171368988?k=20&m=171368988&s=612x612&w=0&h=mXxENFXe4wBdkRkTdP_HdyXH7PIbg5piRqOFW6F2a1w=",
   quantity:"12pc",
   deliveryTime:"30m",
 },
 ]
 const App = ()=> {
-  const[foodList,setFoodList]=useState(totalfoodList)
+  const[foodList,setFoodList]=useState(totalfoodList);
+  const[editScreenVisibility,setEditScreenVisibility]=useState(false);
+  const[editFoodIndex,setEditFoodIndex]=useState(null);
   const sort=(order)=>{
     switch(order){
       case "High to low":
@@ -72,7 +74,7 @@ const App = ()=> {
   return (
     <>
     <div className="sort-section">
-      <label>Price</label>
+      
       <select
       // value={sortInput}
        onChange={(e)=>{
@@ -80,8 +82,8 @@ const App = ()=> {
          sort(e.target.value);
        }}
        >
-         <option value="">Select</option>
-        <option value="High to low">Hight to low</option>
+         <option value="">Sort By Price</option>
+        <option value="Hight to low">Hight to low</option>
         <option value="Low to high">Low to high</option>
       </select>
       
@@ -102,11 +104,18 @@ const App = ()=> {
           
         })
       }}
+      editFood={()=>{
+        setEditFoodIndex(i);
+        setEditScreenVisibility(true)
+      }}
       />)
     })
   }
       </div>
-      <EditScreen/>
+      {editScreenVisibility && <EditScreen setEditScreenVisibility={setEditScreenVisibility}
+      editFoodIndex={editFoodIndex} 
+      foodList={foodList}
+      />}
       </>
     );
   }

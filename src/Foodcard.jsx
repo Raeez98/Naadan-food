@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 
-const Foodcard = ({title,imageUrl,price,description,status,deleteCard,toggleStatus}) => {
+const Foodcard = ({title,imageUrl,price,description,status,deleteCard,toggleStatus,editFood}) => {
     const[isDeleted,setIsDeleted]=useState(false);
  return (
         <div className={`food-card ${isDeleted? "food-card-deleted":""}`}>
@@ -13,7 +13,9 @@ const Foodcard = ({title,imageUrl,price,description,status,deleteCard,toggleStat
             }
             >
                     </div>
-              <div className="food-card-edit-button" />     
+              <div className="food-card-edit-button" 
+              onClick={editFood}
+              />     
             <img className="food-card-thumbnail" src={imageUrl} alt={title}/>
             <div className="food-card-detail-section">
                 
