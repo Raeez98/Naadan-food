@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
 
-const EditScreen = ({setEditScreenVisibility,editFoodIndex,foodList,setFoodList}) => {
+const EditScreen = ({setEditScreenVisibility,editFoodIndex,foodList,setFoodList,addForm}) => {
     const[editFoodForm,setEditFoodForm]=useState(foodList[editFoodIndex]);
+    const[addFoodForm,setAddFoodForm]=useState(foodList[editFoodIndex]);
     const{title,price,description}=editFoodForm;
     const onChange=(value,key)=>{
         setEditFoodForm(prev=>{
@@ -16,7 +17,7 @@ const EditScreen = ({setEditScreenVisibility,editFoodIndex,foodList,setFoodList}
         e.preventDefault();
         setFoodList(prev=>{
             let newList=[...prev];
-            newList[editFoodIndex]=editFoodForm;
+            newList[editFoodIndex]=editFoodForm;  // usedf for editing form and saving
             return newList;
         })
         setEditScreenVisibility(false)
@@ -27,10 +28,21 @@ const EditScreen = ({setEditScreenVisibility,editFoodIndex,foodList,setFoodList}
             <div className="edit-food-card-container">
                 <div className="food-card-close-button"
                 onClick={()=>{
+                    if(addForm==="Add New Food"){
+                        setFoodList(foodList.filter((_value,i)=>editFoodIndex !==i
+
+                        )
+                    )
+                    }   
+                    
                     setEditScreenVisibility(false)
-                }}
+                    
+
+
+                    }
+                }
                 />
-            <h2>Edit</h2>
+            <h2>{addForm}</h2>
             <form onSubmit={editFoodSave}> 
             <div className="input-fields">
                 <label>Name:</label>
