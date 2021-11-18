@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 
-const EditScreen = ({setEditScreenVisibility,editFoodIndex,foodList}) => {
+const EditScreen = ({setEditScreenVisibility,editFoodIndex,foodList,setFoodList}) => {
     const[editFoodForm,setEditFoodForm]=useState(foodList[editFoodIndex]);
     const{title,price,description}=editFoodForm;
     const onChange=(value,key)=>{
@@ -10,6 +10,16 @@ const EditScreen = ({setEditScreenVisibility,editFoodIndex,foodList}) => {
                ...prev,[key]:value
            } 
         })
+    }
+
+    const editFoodSave=(e)=>{
+        e.preventDefault();
+        setFoodList(prev=>{
+            let newList=[...prev];
+            newList[editFoodIndex]=editFoodForm;
+            return newList;
+        })
+        setEditScreenVisibility(false)
     }
 
     return (
@@ -21,7 +31,7 @@ const EditScreen = ({setEditScreenVisibility,editFoodIndex,foodList}) => {
                 }}
                 />
             <h2>Edit</h2>
-            <form>
+            <form onSubmit={editFoodSave}> 
             <div className="input-fields">
                 <label>Name:</label>
                 <input type="text" value={title}

@@ -55,7 +55,7 @@ margin: auto; */
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
-    color:black;
+    color:solid black;
    padding:2px;
 }
 .food-card-detail-section{

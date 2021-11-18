@@ -19,7 +19,7 @@ const totalfoodList = [{
   price: 180,
   status:false,
   flavor:"Spicy",
-  description:"  Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, dolorem omnis! Odit accusamus corrupti, praesentium vitae quasi suscipit beatae quia voluptas hic sunt nisi, aliquam eos dolor aspernatur cum minus.",
+  description:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, dolorem omnis! Odit accusamus corrupti, praesentium vitae quasi suscipit beatae quia voluptas hic sunt nisi, aliquam eos dolor aspernatur cum minus. ",
   imageUrl:"https://media.gettyimages.com/photos/marinated-chicken-wings-picture-id171368988?k=20&m=171368988&s=612x612&w=0&h=mXxENFXe4wBdkRkTdP_HdyXH7PIbg5piRqOFW6F2a1w=",
   quantity:"12pc",
   deliveryTime:"30m",
@@ -83,7 +83,7 @@ const App = ()=> {
        }}
        >
          <option value="">Sort By Price (₹)</option>
-        <option value="Hight to low">Hight to low</option>
+        <option value="High to low">Hight to low</option>
         <option value="Low to high">Low to high</option>
       </select>
       
@@ -92,7 +92,7 @@ const App = ()=> {
     {
         foodList.map((food,i)=>{
       return(<FoodCard{...food} key={food.id}  deleteCard={()=>{
-        setFoodList(foodList.filter((_val,index)=>i!=index))
+        setFoodList(foodList.filter((_val,index)=>i!==index))
       }}
       toggleStatus={()=>{
         setFoodList(prev=>{
@@ -115,6 +115,7 @@ const App = ()=> {
       {editScreenVisibility && <EditScreen setEditScreenVisibility={setEditScreenVisibility}
       editFoodIndex={editFoodIndex} 
       foodList={foodList}
+      setFoodList={setFoodList}
       />}
       </>
     );
