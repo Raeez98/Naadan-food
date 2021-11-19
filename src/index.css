@@ -175,10 +175,9 @@ select{
     } */
 .add-todo{
      /* padding:10px;  */
-    margin:10px;
+   
     display:grid;
     grid-template-columns: auto 100px;
-   width: 900px;
    height: 53px;
 left: 140px;
 top: 194px;
@@ -186,6 +185,7 @@ top: 194px;
 background: #FFFFFF;
 /* border: 1px solid #808080; */
 box-sizing: border-box;
+width:100%;
 }
 .todo-button{
     background-color: rgb(12, 245, 12);
@@ -210,7 +210,7 @@ li{
     padding:10px;
    list-style:none;
     display:grid;
-    grid-template-columns: auto 1fr auto;   
+    grid-template-columns: auto 1fr auto auto;   
     background-color: #ECECEE;
     margin:15px 0;
     gap:10px;
@@ -222,14 +222,21 @@ background: #ECECEC;
 
 /* grid-template-columns: auto auto auto;    */
 .todo-list{
-    margin:10px;
+   
     cursor:pointer;
     height: 52px;
-    left:142px;
-    top:262px;
-    width:900px;
     height:53px;
 }
+.todo-edit-button{
+    background-image:url(./assets/icons/edit-solid.svg);
+    width:15px;
+    height:15px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+
 .todo-close-button{
     background-image:url(./assets/icons/times-solid.svg);
     width:15px;
