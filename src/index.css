@@ -187,18 +187,24 @@ background: #FFFFFF;
 /* border: 1px solid #808080; */
 box-sizing: border-box;
 }
+.todo-button{
+    background-color: rgb(12, 245, 12);
+    border:none;
+
+}
  
 
 .status-circle{
    width: 22px;
    height: 22px;;
    border-radius:50%;
-   background: rgb(6, 241, 6);;
+   background: white;
    border: 1px solid #AEAEAE;
     box-sizing: border-box;
 }
-.green{
+.status-circle--active{
     background-color: green;
+    border:solid 4px #fff;
 }
 li{
     padding:10px;
@@ -232,7 +238,8 @@ background: #ECECEC;
     background-repeat: no-repeat;
 
 }
-switch
+
+
 
 
 

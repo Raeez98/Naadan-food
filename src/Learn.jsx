@@ -17,8 +17,8 @@ const Learn = () => {
   }
     />
     
-  <button onClick={()=>{
-      setTodolist(prev=>[...prev,todo]);
+  <button className="todo-button" onClick={()=>{
+      setTodolist(prev=>[...prev,{text:todo,status:false}]);
       setTodo("")   
       //  used for storing previous values  and keeps empty
   }}
@@ -28,15 +28,31 @@ const Learn = () => {
     
   <div className="todo-list">
   <ul>
-  {todolist.map((value,i)=><li key={i}
+  {todolist.map(({text,status},i)=><li key={i}
   > 
-  <div className="status-circle green" />
+  <div className={`status-circle ${status? "status-circle--active": ""}`}
+  onClick={
+    ()=>{
+      setTodolist(
+        prev=>{
+          let newTodoList=[...prev];
+          let newTodo={...newTodoList[i]};
+          newTodo.status=!newTodo.status;
+          newTodoList[i]=newTodo;
+          return newTodoList
+        }
+      )
+    }
+  }
+  
+  />
   <div className="todo-text">
-  {value}
+  {text}
   </div>
   <div className="todo-close-button" 
   onClick={()=>{setTodolist(todolist.filter((_value,index)=> i !==index))
-  }}></div>
+  }}>
+</div>
   </li>
   )}  
  
