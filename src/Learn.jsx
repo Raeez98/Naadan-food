@@ -5,6 +5,7 @@ import Todo  from  "./Components/todo"
 const Learn = () => {
     const[todolist,setTodolist]=useState([]);
     const[todo,setTodo]=useState("");
+    const[duplicateError,setDuplicateError]=useState(false);
     return (
        
         <div className="container">
@@ -17,12 +18,23 @@ const Learn = () => {
   }
   }/>
     <button className="todo-button" onClick={()=>{
-       if(!todo)return    //directly check the condition,than executing function
-      setTodolist(prev=>[...prev,{text:todo,status:false}]);
+       if(!todo)return 
+      if(todolist.filter(({text})=> todo.toLowerCase()===text.toLowerCase()).length){
+        setDuplicateError(true);
+        setTimeout(()=>{setDuplicateError(false);},1500)
+        return}
+
+         //directly check the condition,than executing function
+      setTodolist(prev=>[...prev,{text:todo,status:false,isEditMode:false}]);
+      
       setTodo("")   
       //  used for storing previous values  and keeps empty
   }}
   >Add New</button>
+  {duplicateError && <div className="duplicate-error">
+  Already exists
+  </div>}
+  
   </div>
 <div className="todo-list">
   <ul>

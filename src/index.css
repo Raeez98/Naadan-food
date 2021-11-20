@@ -6,7 +6,8 @@
 .container{
     max-width:900px;
     margin:auto;
-    padding: 0 1 px;
+    padding: 0 10px;
+
 }
 .food-card-list{
 display: grid;
@@ -175,17 +176,17 @@ select{
     } */
 .add-todo{
      /* padding:10px;  */
-   
     display:grid;
-    grid-template-columns: auto 100px;
+    grid-template-columns: 1fr auto;
    height: 53px;
-left: 140px;
-top: 194px;
-
+   position: relative;
+/* left: 140px;
+top: 194px; */
 background: #FFFFFF;
 /* border: 1px solid #808080; */
 box-sizing: border-box;
 width:100%;
+
 }
 .todo-button{
     background-color: rgb(12, 245, 12);
@@ -227,6 +228,18 @@ background: #ECECEC;
     height: 52px;
     height:53px;
 }
+
+
+
+.todo-close-button,.todo-edit-button,.todo-edit-cancel-button,.todo-edit-save-button{
+    background-image:url(./assets/icons/times-solid.svg);
+    width:15px;
+    height:15px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
 .todo-edit-button{
     background-image:url(./assets/icons/edit-solid.svg);
     width:15px;
@@ -235,16 +248,62 @@ background: #ECECEC;
     background-repeat: no-repeat;
 
 }
-
-
-.todo-close-button{
-    background-image:url(./assets/icons/times-solid.svg);
-    width:15px;
-    height:15px;
-    background-position: center;
-    background-repeat: no-repeat;
-
+.todo-edit-text-field{
+    width:100%;
+    padding:8px 30px 8px 10px;
+    border:none;
 }
+.todo-edit-text-contaniner{
+    position:relative;
+}
+.todo-edit-cancel-button{
+    width: 20px;
+    height: 20px;
+    background-image: url(./assets/icons/Group\ 4.svg);
+    position: absolute;
+    right:5px;
+    top:50%;
+    transform: translateY(-50%);
+}
+.todo-edit-save-button{
+    background-image: url(./assets/icons/Vector\ 3.svg);
+    background-size: 100%;
+}
+
+.todo-error-text{
+    width: 70%;
+    text-align: right;
+    right:30px;
+    color:red;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    
+}
+.duplicate-error{
+
+    width: 70%;
+    text-align: right;
+     right: 80px;
+    color:red;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+}
+@media screen and (max-width: 600px){
+    .todo-button{
+        padding:15px;
+    }
+
+.duplicate-error{
+    right:65px;
+    }
+.todo-items{
+    gap:5px;
+
+    }
+}
+    
 
 
 
