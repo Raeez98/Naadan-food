@@ -7,6 +7,7 @@
     max-width:900px;
     margin:auto;
     padding: 0 10px;
+    
 
 }
 .food-card-list{
@@ -186,7 +187,6 @@ background: #FFFFFF;
 /* border: 1px solid #808080; */
 box-sizing: border-box;
 width:100%;
-
 }
 .todo-button{
     background-color: rgb(12, 245, 12);
@@ -290,6 +290,8 @@ background: #ECECEC;
     top:50%;
     transform: translateY(-50%);
 }
+ 
+
 @media screen and (max-width: 600px){
     .todo-button{
         padding:15px;
@@ -302,6 +304,8 @@ background: #ECECEC;
     gap:5px;
 
     }
+   
+    
 }
     
 

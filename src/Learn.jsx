@@ -10,8 +10,9 @@ const Learn = () => {
        
         <div className="container">
           
-            
+  <div className="my-todo">      
   <h2>My To Do List</h2>
+  </div>    
   <div className="add-todo">
   <input type="text" id="myInput" placeholder="Add New..." value={todo} onChange={(e)=>{
       setTodo(e.target.value); //used for storing todo value to settodo
