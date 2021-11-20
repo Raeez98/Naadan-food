@@ -62,7 +62,7 @@ onClick={
         },1500)
         return
       }
-      if(text !=editText && todolist.filter(({text})=> text.toLowerCase()===editText.toLowerCase()).length){
+      if(text !==editText && todolist.filter(({text})=> text.toLowerCase()===editText.toLowerCase()).length){
         setDuplicateError(true);
         setTimeout(()=>{setDuplicateError(false);},1500)
         return}

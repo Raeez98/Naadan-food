@@ -9,10 +9,8 @@ const Learn = () => {
     return (
        
         <div className="container">
-          
-  <div className="my-todo">      
-  <h2>My To Do List</h2>
-  </div>    
+          <h2>My To Do List</h2>
+     
   <div className="add-todo">
   <input type="text" id="myInput" placeholder="Add New..." value={todo} onChange={(e)=>{
       setTodo(e.target.value); //used for storing todo value to settodo
@@ -23,6 +21,7 @@ const Learn = () => {
       if(todolist.filter(({text})=> todo.toLowerCase()===text.toLowerCase()).length){
         setDuplicateError(true);
         setTimeout(()=>{setDuplicateError(false);},1500)
+      console.log(todo);
         return}
 
          //directly check the condition,than executing function

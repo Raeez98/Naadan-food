@@ -106,6 +106,9 @@ margin: auto; */
     background-size: 80%;
     
 }
+html,body,#root{
+    height:100%;
+}
 .over-view-screen{
     position:fixed;
     top:0;
@@ -177,10 +180,9 @@ select{
     } */
 .add-todo{
      /* padding:10px;  */
-    display:grid;
+     display:grid; 
     grid-template-columns: 1fr auto;
-   height: 53px;
-   position: relative;
+   /* position: relative; */
 /* left: 140px;
 top: 194px; */
 background: #FFFFFF;
@@ -225,8 +227,7 @@ background: #ECECEC;
 .todo-list{
    
     cursor:pointer;
-    height: 52px;
-    height:53px;
+    height: calc(100% - 100px);
 }
 
 
@@ -289,6 +290,15 @@ background: #ECECEC;
     position: absolute;
     top:50%;
     transform: translateY(-50%);
+}
+
+
+ul{
+   height:100%;
+    overflow: auto;
+}
+.container{
+    height:100%;
 }
  
 
