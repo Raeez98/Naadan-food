@@ -1,13 +1,32 @@
 import React, { useState } from "react";
-const Todo = ({setTodolist,status,text,i,todolist,isEditMode}) => {
+import postData from '../Services/postData'
+const Todo = ({setTodolist,status,text,i,todolist,isEditMode,user}) => {
   const[editText,setEditText]=useState(text);
   const[errorTextVisibility,setErrorTextVisibility]=useState(false);
   const[duplicateError,setDuplicateError]=useState(false);
+ 
     return ( 
         <li key={i}> 
   <div className={`status-circle ${status? "status-circle--active": ""}`}
   onClick={
     ()=>{
+      postData("/todos",
+      {
+       
+         user,
+         todos:[
+           ...todolist.map(({text,status},index)=>{
+             if(i===index){
+             return{
+             text,
+             status:!status
+             }}
+              return{
+             text,
+             status
+             }})]
+
+      });
       setTodolist(
         prev=>{
           let newTodoList=[...prev];
@@ -66,6 +85,23 @@ onClick={
         setDuplicateError(true);
         setTimeout(()=>{setDuplicateError(false);},1500)
         return}
+        postData("/todos",
+        {
+         
+           user,
+           todos:[
+             ...todolist.map(({text,status},index)=>{
+               if(i===index){
+               return{
+               text:editText,
+               status
+               }}
+                return{
+               text,
+               status
+               }})]
+
+        });
 
       
       
@@ -109,7 +145,17 @@ onClick={
  />
     </>}
     <div className="todo-close-button"
-     onClick={()=>{setTodolist(todolist.filter((_value,index)=> i !==index))
+     onClick={()=>{
+      postData("/todos",
+      {
+       
+         user,
+         todos:(todolist.filter((_value,index)=> i !==index))
+         
+             
+
+      });
+       setTodolist(todolist.filter((_value,index)=> i !==index))
   
   }}/>
   

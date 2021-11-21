@@ -1,11 +1,29 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Todo  from  "./Components/todo"
+import postData from './Services/postData';
 
 const Learn = () => {
+  const user="Raeez";
     const[todolist,setTodolist]=useState([]);
     const[todo,setTodo]=useState("");
     const[duplicateError,setDuplicateError]=useState(false);
+   
+    useEffect(()=>{
+      fetch(`http://192.168.1.42:8086/todos/${user}`)
+      .then((result)=>result.json())
+      .then((value)=>{
+        setTodolist(value[0].todos.map(({text,status})=>{
+          return{
+            text,status,isEdirMode:false
+          }
+        }));
+
+       
+      })
+    },[]);
+    
+    
     return (
        
         <div className="container">
@@ -25,6 +43,22 @@ const Learn = () => {
         return}
 
          //directly check the condition,than executing function
+         postData("/todos",
+         {
+          
+            user,
+            todos:[
+              ...todolist.map(({text,status})=>{
+                return{
+                text,
+                status
+                }}),
+                {
+                text:todo,
+                status:false
+                }]
+
+         });
       setTodolist(prev=>[...prev,{text:todo,status:false,isEditMode:false}]);
       
       setTodo("")   
@@ -43,7 +77,8 @@ const Learn = () => {
   {...data}
   key={i} i={i}
   setTodolist={setTodolist}
-  todolist={todolist}/>
+  todolist={todolist}
+  user={user}/>
   )}
   </ul>
   </div>
