@@ -1,4 +1,4 @@
-async function postData(url = '', data = {}) {
+async function postData(url = '', data = {}) {     //This got from fetch url
     // Default options are marked with *
     const response = await fetch('http://192.168.1.42:8086'+url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.

@@ -3,16 +3,21 @@ import { useState,useEffect } from 'react';
 import Todo  from  "./Components/todo"
 import postData from './Services/postData';
 
-const Learn = () => {
-  const user="Raeez";
+const Learn = ({history}) => {         //calling the object
+  const user=localStorage.getItem("userName");      //passing the parameters
     const[todolist,setTodolist]=useState([]);
     const[todo,setTodo]=useState("");
     const[duplicateError,setDuplicateError]=useState(false);
    
     useEffect(()=>{
-      fetch(`http://192.168.1.42:8086/todos/${user}`)
+      fetch(`http://192.168.1.42:8086/todos/${user}`)   // defining the url of those users
       .then((result)=>result.json())
       .then((value)=>{
+        if(!value.length){
+          localStorage.removeItem("userName");  //remove defined username and return to create user tab 
+          history.push("/learn/login");
+          return;
+        }
         setTodolist(value[0].todos.map(({text,status})=>{
           return{
             text,status,isEdirMode:false
@@ -22,12 +27,13 @@ const Learn = () => {
        
       })
     },[]);
-    
+   
     
     return (
        
         <div className="container">
-          <h2>My To Do List</h2>
+          <h2>My To Do List ({user})</h2>
+          
      
   <div className="add-todo">
   <input type="text" id="myInput" placeholder="Add New..." value={todo} onChange={(e)=>{
@@ -71,6 +77,13 @@ const Learn = () => {
   
   </div>
 <div className="todo-list">
+<div className="logout-section">
+             <button onClick={()=>{
+               localStorage.removeItem("userName");
+               history.push("/learn/login");
+             }
+             }>logout</button>
+          </div>
   <ul>
   {todolist.map((data,i)=>
   <Todo

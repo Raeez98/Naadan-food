@@ -318,8 +318,14 @@ ul{
     
 }
     
-
-
+.logout-section{
+    display: grid;
+    justify-content: end;
+    margin:15px 0;
+}
+.logout-section-button{
+    background-color: gray;
+}
 
 
 
