@@ -116,7 +116,7 @@ const Home = ()=> {
       
     <div className="food-card-list">
     {
-        foodList.map((food,i)=>{
+        foodList.map((food,i)=>{  //mapping the array 
       return(<FoodCard{...food} key={food.id}  deleteCard={()=>{
         setFoodList(foodList.filter((_val,index)=>i!==index))
       }}

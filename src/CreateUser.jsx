@@ -1,12 +1,23 @@
 import { useState } from "react";
 import postData from "./Services/postData"
+import { Link } from "react-router-dom";
 
 
 const CreateUser = ({history}) => {
     const[userName,setUserName]=useState("")
+    const[errorTextVisibility,setErrorTextVisibility]=useState(false);
     const createNewUser=(e)=>{
         e.preventDefault();
-         if(!userName)return         // this is used  for default value that to avoid reloading of page
+         if(!userName)return 
+                 // this is used  for default value that to avoid reloading of page
+                 fetch(`http://192.168.1.42:8086/todos/${userName}`)   // defining the url of those users
+                 .then((result)=>result.json())
+                 .then((value)=>{
+                   if(value.length){
+                       setErrorTextVisibility(true);
+                       setUserName("");
+                        return;
+                   }
         postData("/todos",
          {
           user:userName,
@@ -17,7 +28,8 @@ const CreateUser = ({history}) => {
              history.push(`/learn/user`); // push the user in 
      }
 
-} 
+}) 
+}
 )}
      if(localStorage.getItem("userName")){
          history.push("/learn/user");
@@ -44,8 +56,17 @@ const CreateUser = ({history}) => {
 
                
                />
+               
                <button type="submit">ADD</button>
-               </form>  
+        </form>  
+        {errorTextVisibility && <div className="error-text">
+            User Already exist
+            </div>}
+            <div className="link-section">
+                Already have an account
+                <Link to="/learn/login">  Click here!  </Link>
+
+            </div>
         </div>
        
     )

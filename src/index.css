@@ -58,7 +58,7 @@ margin: auto; */
 }
 .food-card-description{
     overflow: hidden;
-    text-overflow: allipsis;
+    text-overflow: allipsis;  /*for ...*/
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
@@ -300,6 +300,23 @@ ul{
 .container{
     height:100%;
 }
+.logout-section{
+    display: grid;
+    justify-content: end;
+    margin:15px 0;
+}
+.logout-section-button{
+    background-color: gray;
+}
+.error-text{
+    color:red;
+    text-align:center;
+    margin:5px 0;
+}
+.link-section{
+    margin:10px 0;
+    text-align: center;
+}
  
 
 @media screen and (max-width: 600px){
@@ -318,14 +335,6 @@ ul{
     
 }
     
-.logout-section{
-    display: grid;
-    justify-content: end;
-    margin:15px 0;
-}
-.logout-section-button{
-    background-color: gray;
-}
 
 
 
