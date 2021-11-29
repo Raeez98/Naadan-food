@@ -17,6 +17,7 @@ html,body,#root{
     height:600px;
     margin:auto;
     background-color: black;
+    box-shadow: 4px 4px 5px 2px #0005;
 }
 .grid-container div{
      display: grid;
@@ -25,10 +26,15 @@ html,body,#root{
     place-items: center;
     font-size: 50px;
     font-style: italic;
-    padding: 10px 25px;
     height: calc(580px/8);
+   
 }
 .chess-piece{
-    height:80%;
+    width: 35px;
+    height: 50px;
    
+}
+#root{
+    padding:20px;
+    background-color: #eee;
 }
