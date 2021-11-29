@@ -3,7 +3,7 @@ import { useState,useEffect } from 'react';
 import Todo  from  "./Components/todo"
 import postData from './Services/postData';
 
-const Learn = ({history}) => {         //calling the object
+const Learn = ({history}) => {                      //calling the object
   const user=localStorage.getItem("userName");      //passing the parameters
     const[todolist,setTodolist]=useState([]);
     const[todo,setTodo]=useState("");

@@ -13,6 +13,8 @@ import{
 import CreateUser from "./CreateUser";
 import Async from "./JS/Async";
 import Sum from "./Sum";
+import Grid from "./CSS/Grid";
+
 
 
 
@@ -21,6 +23,8 @@ const App = ()=> {
   return(
     <Router>
          <Switch>
+        
+         <Route path="/css/grid"  component={Grid}/>
          <Route path="/sum"  component={Sum}/>
          <Route path="/js/async"  component={Async}/>
         <Route path="/learn/user"  component={Learn}/>

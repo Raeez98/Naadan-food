@@ -12,7 +12,7 @@ const Login  = ({history}) => {
          return;
                 
          // this is used  for default value that to avoid reloading of page
-          fetch(`http://192.168.1.42:8086/todos/${userName}`)   // defining the url of those users
+         fetch(`http://192.168.1.42:8086/todos/${userName}`)   // defining the url of those users
       .then((result)=>result.json())
       .then((value)=>{
         if(!value.length){
