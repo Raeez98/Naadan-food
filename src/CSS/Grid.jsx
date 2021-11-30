@@ -103,6 +103,36 @@ const chessInitialState=[
 
 const Grid = () => {
     const[chessState,setChessState]=useState(chessInitialState);
+    const[activeColumn,setActiveColumn]=useState([null,null])
+    const movePiece=(i,j,x,y)=>{
+         if(x===i && y===j)return
+         
+        if(chessState[x][y].currentPiece===blackPawn && i>=x) return
+        if(chessState[x][y].currentPiece===pawnImage && i<=x) return
+        if(chessState[x][y].currentPiece===queenBlack || chessState[x][y].currentPiece===queenWhite){
+        if(x!==i || y!==y || Math.abs(i-x) || Math.abs(j-y)) return
+    
+        }
+        setChessState(
+            prev=>{
+                let newState=[...prev];     //spreading the arry in prev for two arrys as pointer
+                let newColumn=[...newState[i]]  //spreading in all array
+                let InitialColumn=[...newState[x]]
+
+                newColumn[j]= prev[x][y]
+                
+                InitialColumn[y]={
+                    currentPiece:null
+                }
+                newState[i]=newColumn
+                newState[x]=InitialColumn
+                console.log(newState);
+                return newState;
+            }
+
+        )
+
+    }
 
     return (
         <div className="grid-container">
@@ -113,31 +143,27 @@ const Grid = () => {
                     <div style={
                         {
                             backgroundColor:(i+j) %2 ? "#9e561b":"#e6ccab",
+                            border:activeColumn[0]===i && activeColumn[1]===j && "solid 3px blue"  //border color blue when we click
                         }
                     } onClick={()=>{
-                        if(i===4){
-                            setChessState(
-                                prev=>{
-                                    let newState=[...prev];     //spreading the arry in prev for two arrys as pointer
-                                    let newColumn=[...newState[i]]  //spreading in all array
-                                    let InitialColumn=[...newState[6]]
-
-                                    newColumn[j]={
-                                        currentPiece:blackPawn
-                                    }
-                                    InitialColumn[j]={
-                                        currentPiece:null
-                                    }
-                                    newState[i]=newColumn
-                                    newState[6]=InitialColumn
-                                    return newState;
-                                }
-
-                            )
-                        }
-                    }
-                    }
-                    >
+                        if(currentPiece){
+                            if(activeColumn[0]===null) {
+                            setActiveColumn([i,j]);  //for image replacment
+                        }else{
+                         
+                           movePiece(i,j,activeColumn[0],activeColumn[1])
+                           setActiveColumn([null,null])
+                       }
+                        
+                         } else{
+                           if(activeColumn[0]===null)     //to avoid errors
+                            return
+                            movePiece(i,j,activeColumn[0],activeColumn[1])
+                            setActiveColumn([null,null]);
+                        }}
+                    }>
+                    
+                     
                         {
                             currentPiece && 
                             <img src={currentPiece} className="chess-piece"/>
