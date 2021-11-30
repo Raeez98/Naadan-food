@@ -105,12 +105,12 @@ const Grid = () => {
     const[chessState,setChessState]=useState(chessInitialState);
     const[activeColumn,setActiveColumn]=useState([null,null])
     const movePiece=(i,j,x,y)=>{
-         if(i===x && j===y)return
+         if(i===x && j===y)return      //it doesnot move backwards once it changes its movement
          
-        if(chessState[x][y].currentPiece===blackPawn && i>=x) return
-        if(chessState[x][y].currentPiece===pawnImage && i<=x) return
+        if(chessState[x][y].currentPiece===blackPawn && i>=x) return   //black pawn moves front
+        if(chessState[x][y].currentPiece===pawnImage && i<=x) return   //white pawn moves front...it goes increses
         if(chessState[x][y].currentPiece===queenBlack || chessState[x][y].currentPiece===queenWhite){
-        if(i!==x && j!==y && Math.abs(i-x)!== Math.abs(j-y)) return
+        if(i!==x && j!==y && Math.abs(i-x)!== Math.abs(j-y)) return    //queen moves along 6 direction
     
         }
         setChessState(
