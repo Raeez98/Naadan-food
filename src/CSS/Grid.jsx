@@ -105,12 +105,12 @@ const Grid = () => {
     const[chessState,setChessState]=useState(chessInitialState);
     const[activeColumn,setActiveColumn]=useState([null,null])
     const movePiece=(i,j,x,y)=>{
-         if(x===i && y===j)return
+         if(i===x && j===y)return
          
         if(chessState[x][y].currentPiece===blackPawn && i>=x) return
         if(chessState[x][y].currentPiece===pawnImage && i<=x) return
         if(chessState[x][y].currentPiece===queenBlack || chessState[x][y].currentPiece===queenWhite){
-        if(x!==i || y!==y || Math.abs(i-x) || Math.abs(j-y)) return
+        if(i!==x && j!==y && Math.abs(i-x)!== Math.abs(j-y)) return
     
         }
         setChessState(
@@ -118,19 +118,23 @@ const Grid = () => {
                 let newState=[...prev];     //spreading the arry in prev for two arrys as pointer
                 let newColumn=[...newState[i]]  //spreading in all array
                 let InitialColumn=[...newState[x]]
-
+                if(i===x){
                 newColumn[j]= prev[x][y]
-                
+                 newColumn[y]={
+                    currentPiece:null }
+                 }else{
+                     newColumn[j]=prev[x][y]
                 InitialColumn[y]={
                     currentPiece:null
                 }
-                newState[i]=newColumn
                 newState[x]=InitialColumn
-                console.log(newState);
-                return newState;
             }
-
+                newState[i]=newColumn
+                // console.log(newState);
+                return newState;}
         )
+
+        
 
     }
 
